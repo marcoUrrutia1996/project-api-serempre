@@ -85,3 +85,66 @@ exports.deleteUser = functions.https.onRequest(async (request, response) => {
     }
 
 });
+
+exports.createUserPoint = functions.https.onRequest(async (request, response) => {
+
+    console.log("request.method: ", request.method);
+    try {
+        if (request.method === 'POST') {
+            let respValidaciones = userValidationEntity.usersPointCreate(request.body);
+            if(respValidaciones.code == 2){
+                return response.json(respValidaciones)
+            }
+            let respRepo = await usersRepository.createUserPoint(request.body);
+            return response.json(respRepo)
+        } else {
+            return response.json({ messsage: 'El método tiene que ser POST.' });
+        }
+    } catch (error) {
+        console.log("el error : ",error)
+        return response.json({ messsage: 'Ocurrió un error en el api.', error: error });
+    }
+
+});
+
+exports.updateUserPoint = functions.https.onRequest(async (request, response) => {
+
+    console.log("request.method: ", request.method);
+    try {
+        if (request.method === 'PUT') {
+            let respValidaciones = userValidationEntity.usersPointUpdate(request.body);
+            if(respValidaciones.code == 2){
+                return response.json(respValidaciones)
+            }
+            let respRepo = await usersRepository.updateUserPoint(request.body);
+            return response.json(respRepo)
+        } else {
+            return response.json({ messsage: 'El método tiene que ser POST.' });
+        }
+    } catch (error) {
+        console.log("el error : ",error)
+        return response.json({ messsage: 'Ocurrió un error en el api.', error: error });
+    }
+
+});
+
+exports.deleteUserPoint = functions.https.onRequest(async (request, response) => {
+
+    console.log("request.method: ", request.method);
+    try {
+        if (request.method === 'DELETE') {
+            let respValidaciones = userValidationEntity.usersPointDelete(request.body);
+            if(respValidaciones.code == 2){
+                return response.json(respValidaciones)
+            }
+            let respRepo = await usersRepository.deleteUserPoint(request.body);
+            return response.json(respRepo)
+        } else {
+            return response.json({ messsage: 'El método tiene que ser POST.' });
+        }
+    } catch (error) {
+        console.log("el error : ",error)
+        return response.json({ messsage: 'Ocurrió un error en el api.', error: error });
+    }
+
+});

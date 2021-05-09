@@ -20,3 +20,7 @@ let usersController = require('./controllers/users')
 exports.createUser = usersController.createUser;
 exports.updateUser = usersController.updateUser;
 exports.deleteUser = usersController.deleteUser;
+
+exports.createUserPoint = usersController.createUserPoint;
+exports.updateUserPoint = usersController.updateUserPoint;
+exports.deleteUserPoint = usersController.deleteUserPoint;

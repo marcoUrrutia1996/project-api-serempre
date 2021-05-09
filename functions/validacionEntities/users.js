@@ -95,6 +95,102 @@ let usersValidationEntity = {
             console.log("el error en el validation createUser : ",error)
         }
         
+    },
+
+    usersPointCreate(data){
+        try {
+            let objResp = {}
+            if(!(typeof data.quantity == 'number')){
+                objResp.code = 2
+                objResp.message = 'Formato de la cantidad de puntos no es correcto'
+                return objResp
+            }
+            if(!data.reason || ((data.reason+' ').trim() == '')){
+                objResp.code = 2
+                objResp.message = 'Formato del motivo no es correcto'
+                return objResp
+            }
+            if(data.reason.length < 2){
+                objResp.code = 2
+                objResp.message = 'El motivo tiene que tener mínimo 3 caracteres'
+                return objResp
+            }
+            if(!data.idUser || ((data.idUser+' ').trim() == '')){
+                objResp.code = 2
+                objResp.message = 'Formato del idUser no es correcto'
+                return objResp
+            }
+
+            
+            objResp.code = 0
+            objResp.message = ''
+            return objResp
+        } catch (error) {
+            console.log("el error en el validation createUser : ",error)
+        }
+        
+    },
+
+    usersPointUpdate(data){
+        try {
+            let objResp = {}
+            if(!data.idUser || ((data.idUser+' ').trim() == '')){
+                objResp.code = 2
+                objResp.message = 'Formato del idUser no es correcto'
+                return objResp
+            }
+            if(!data.idPoint || ((data.idPoint+' ').trim() == '')){
+                objResp.code = 2
+                objResp.message = 'Formato del idPoint no es correcto'
+                return objResp
+            }
+
+            if(!(typeof data.quantity == 'number')){
+                objResp.code = 2
+                objResp.message = 'Formato de la cantidad de puntos no es correcto'
+                return objResp
+            }
+            if(!data.reason || ((data.reason+' ').trim() == '')){
+                objResp.code = 2
+                objResp.message = 'Formato del motivo no es correcto'
+                return objResp
+            }
+            if(data.reason.length < 2){
+                objResp.code = 2
+                objResp.message = 'El motivo tiene que tener mínimo 3 caracteres'
+                return objResp
+            }
+            
+            objResp.code = 0
+            objResp.message = ''
+            return objResp
+        } catch (error) {
+            console.log("el error en el validation createUser : ",error)
+        }
+        
+    },
+
+    usersPointDelete(data){
+        try {
+            let objResp = {}
+            if(!data.idUser || ((data.idUser+' ').trim() == '')){
+                objResp.code = 2
+                objResp.message = 'Formato del idUser no es correcto'
+                return objResp
+            }
+            if(!data.idPoint || ((data.idPoint+' ').trim() == '')){
+                objResp.code = 2
+                objResp.message = 'Formato del idPoint no es correcto'
+                return objResp
+            }
+
+            objResp.code = 0
+            objResp.message = ''
+            return objResp
+        } catch (error) {
+            console.log("el error en el validation createUser : ",error)
+        }
+        
     }
 }
 
