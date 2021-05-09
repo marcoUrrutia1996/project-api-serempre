@@ -1,0 +1,1 @@
+module.exports = { key:'mi-llave-secreta' }
